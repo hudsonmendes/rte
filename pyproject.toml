@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "rte"
+version = "0.0.1"
+authors = [{ name = "Hudson Leonardo Mendes", email = "null@void.com" }]
+description = "Relation Triplet Extraction from Unstructured Text Documents"
+readme = "README.md"
+license = { file = "LICENSE" }
+urls = { homepage = "https://github.com/hudsonmendes/rte" }
+keywords = ["rte"]
+dependencies = [
+    "transformers==4.43.3",
+    "torch==2.2.2",
+    "numpy<2",
+    "accelerate",
+    "bitsandbytes",
+]
+
+[project.optional-dependencies]
+dev = ["pre-commit>=3.8.0", "black[jupyter]>=24.4.2", "isort>=5.13.2"]
+test = ["pytest>=7.4.0"]
+etl = []
+tokenisation = []
+modelling = []
+training = []
+serving = []
+
+[tool.black]
+line-length = 160
+
+[tool.isort]
+profile = "black"
+line_length = 160
+src_paths = ["dev", "src", "tests"]
+known_third_party = ["lightning", "torch"]
+known_first_party = [""]
+import_heading_stdlib = "Python Built-in Modules"
+import_heading_thirdparty = "Third-Party Libraries"
+import_heading_firstparty = "My Packages and Modules"
+import_heading_localfolder = "Local Folders"
